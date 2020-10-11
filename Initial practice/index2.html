@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Animation 2</title>
+    <style>
+        .helo{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load",function(){
+            var shapeElement=document.querySelector(".helo");
+            var frames=[
+                {transform:'translateX(0px)'},
+              
+                {transform:'translateX(1250px)'}
+            ]
+            var timings={
+                duration: 2000,
+                iterations:Infinity,
+                // Delay starting by 500ms.
+                 delay: 2000,
+              //  direction:"alternate" // reverse
+            }
+            var shapeAnimate=shapeElement.animate(frames,timings)
+
+
+            document.querySelector('.play').addEventListener("click",function(){
+                shapeAnimate.play();
+            })
+            document.querySelector('.pause').addEventListener("click",function(){
+                shapeAnimate.pause()
+            })
+            document.querySelector('.reverse').addEventListener("click",function(){
+                shapeAnimate.reverse()  
+            })
+            document.querySelector('.updatePlaybackRate').addEventListener("click",function(){
+                shapeAnimate.updatePlaybackRate(shapeAnimate.playbackRate * 1.5)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div >
+        <img class='helo' src="lion_giff.gif" />
+    </div>
+    <hr>
+    <button class='play'>Play</button>
+    <button class='pause'>Pause</button>
+    <button class='reverse'>Reverse</button>
+    <button class='updatePlaybackRate'>updatePlaybackRate</button>
+</body>
+</html>
